@@ -18,6 +18,10 @@
     --peach:#f4c9a6; --rose:#e39a7c; --rose-d:#c9764f;
     --ink:#1a2333; --muted:#55627a; --line:#e6ded2; --line-dark:#27406a;
     --star:#f6e7c8;
+    /* Koala brand green, sampled from koalasleepcenters.com. Accent only. */
+    --leaf:#60a644;      /* use behind navy text, or as text on navy: 5.66:1 on --night */
+    --leaf-d:#3f7230;    /* green text on light backgrounds: 5.11:1 on --dawn, 5.74:1 on white */
+    --leaf-soft:#e7f3e0; /* tint for chips and icon plates */
   }
   *{box-sizing:border-box;}
   html{-webkit-text-size-adjust:100%; overflow-x:hidden; scroll-behavior:smooth;}
@@ -32,11 +36,11 @@
   a{color:var(--teal-d);}
   a:focus-visible,button:focus-visible{outline:3px solid var(--rose); outline-offset:3px; border-radius:4px;}
   .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
-  .eyebrow{font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--teal); font-weight:700; margin:0 0 12px;}
+  .eyebrow{font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--leaf-d); font-weight:700; margin:0 0 12px;}
   .btn{display:inline-flex; align-items:center; gap:10px; font-weight:700; padding:15px 30px; border-radius:40px; text-decoration:none; font-size:16px; transition:background .2s,transform .2s,box-shadow .2s; border:1.5px solid transparent;}
   .btn svg{width:18px; height:18px; flex:none;}
-  .btn.primary{background:var(--rose); color:var(--night); box-shadow:0 10px 26px rgba(227,154,124,.35);}
-  .btn.primary:hover{background:var(--peach); transform:translateY(-1px);}
+  .btn.primary{background:var(--leaf); color:var(--night); box-shadow:0 10px 26px rgba(96,166,68,.32);}
+  .btn.primary:hover{background:var(--leaf-d); color:#fff; transform:translateY(-1px);}
   .btn.ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,.45);}
   .btn.ghost:hover{background:rgba(255,255,255,.1);}
   .btn.ghost.dark{color:var(--night); border-color:var(--dusk-l);}
@@ -52,8 +56,9 @@
   .brand .name{font-family:"Instrument Serif",serif; font-size:20px; line-height:1.1;}
   .brand .name small{display:block; font-family:"Manrope",sans-serif; font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:#b9c7dd; margin-top:3px;}
   nav.top ul{list-style:none; margin:0; padding:0; display:none; gap:26px;}
-  nav.top a{color:#d6e0ef; text-decoration:none; font-weight:600; font-size:15px;}
+  nav.top a{color:#d6e0ef; text-decoration:none; font-weight:600; font-size:15px; padding-bottom:4px; border-bottom:2px solid transparent;}
   nav.top a:hover{color:#fff;}
+  nav.top a[aria-current="page"]{color:#fff; border-bottom-color:var(--leaf);}
   .topbar .call{color:#fff; text-decoration:none; font-weight:700; font-size:15px; display:inline-flex; align-items:center; gap:8px; white-space:nowrap;}
   .topbar .call svg{width:16px; height:16px;}
   @media(min-width:900px){nav.top ul{display:flex;}}
@@ -79,6 +84,8 @@
   .hero-card .sub{color:#b9c7dd; font-size:15px; margin:0 0 6px;}
   .hero-card .row{display:flex; gap:12px; align-items:flex-start; margin-top:16px; color:#c6d2e4; font-size:15.5px;}
   .hero-card .row svg{width:20px; height:20px; flex:none; margin-top:3px; color:var(--peach);}
+  .hero-card .row.open svg{color:var(--leaf);}
+  .hero-card .row.open b{color:var(--leaf);}
   .hero-card .row b{color:#fff; font-weight:600;}
   .hero-card .row a{color:var(--peach);}
   .hero-card .ph{display:inline-block; margin-top:20px; font-family:"Instrument Serif",serif; font-size:30px; color:#fff; text-decoration:none; letter-spacing:.3px;}
@@ -106,10 +113,11 @@
   @media(min-width:620px){.svc-grid{grid-template-columns:1fr 1fr;}}
   @media(min-width:960px){.svc-grid{grid-template-columns:1fr 1fr 1fr;}}
   .svc{display:flex; align-items:center; justify-content:space-between; gap:14px; background:var(--dawn); border:1px solid var(--line); border-radius:14px; padding:14px 16px; text-decoration:none; color:var(--night); transition:transform .2s,box-shadow .2s,border-color .2s;}
-  .svc:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(15,29,51,.10); border-color:var(--teal);}
+  .svc:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(15,29,51,.10); border-color:var(--leaf);}
   .svc .t{font-weight:700; font-size:16px;}
   .svc .d{display:block; font-weight:400; font-size:14px; color:var(--muted); margin-top:2px;}
-  .svc .arrow{width:34px; height:34px; border-radius:50%; background:#fff; border:1px solid var(--line); display:grid; place-items:center; flex:none; color:var(--teal-d);}
+  .svc .arrow{width:34px; height:34px; border-radius:50%; background:#fff; border:1px solid var(--line); display:grid; place-items:center; flex:none; color:var(--leaf-d);}
+  .svc:hover .arrow{background:var(--leaf); border-color:var(--leaf); color:var(--night);}
   .svc .arrow svg{width:16px; height:16px;}
   .svc.kids{background:var(--teal-soft); border-color:#bfe0e0;}
   .svc-note{margin:22px 0 0; font-size:14px; color:var(--muted);}
@@ -157,6 +165,8 @@
   .hours td{padding:9px 0; border-bottom:1px solid var(--line); color:var(--muted);}
   .hours tr:last-child th,.hours tr:last-child td{border-bottom:none;}
   .hours .closed{color:var(--rose-d); font-weight:600;}
+  .hours .open{color:var(--leaf-d); font-weight:600;}
+  .hours .open::before{content:""; display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--leaf); margin-right:8px; vertical-align:1px;}
   .loc-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px;}
   .card p.dir{color:var(--muted); font-size:15.5px; margin:14px 0 0;}
   .areas{list-style:none; padding:0; margin:14px 0 0; display:flex; flex-wrap:wrap; gap:8px;}
@@ -234,7 +244,7 @@
       <h2>Visit us in West El Paso</h2>
       <p class="sub">Just off Helen of Troy Drive, near Resler Drive.</p>
       <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b>6901 Helen of Troy Dr, Ste D-2</b><br>El Paso, TX 79911 &middot; <a href="https://www.google.com/maps/place/Koala+Center+for+Sleep+%26+TMJ+Disorders/@31.8818584,-106.5524475,17z" target="_blank" rel="noopener">Map</a></span></div>
-      <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Mon&ndash;Thu 9am&ndash;4pm</b><br>Fri by appointment &middot; Sat&ndash;Sun closed</span></div>
+      <div class="row open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Open Mon to Thu, 9am to 4pm</b><br>Fri by appointment &middot; Sat and Sun closed</span></div>
       <a class="ph" href="tel:+19153018387">(915) 301-8387</a>
     </aside>
   </div>
@@ -339,7 +349,7 @@
     <h2 class="eyebrow" id="rev-h" style="color:var(--rose-d)">Patient review</h2>
     <div class="stars-row" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
     <blockquote>&ldquo;The staff and doctor were professional, very welcoming, friendly, and knowledgeable. They asked if I had questions and answered everything thoroughly. Great experience! I'm glad I found them!&rdquo;</blockquote>
-    <div class="who">&mdash; Jaime, patient</div>
+    <div class="who">Jaime, patient</div>
   </div>
 </section>
 
@@ -366,10 +376,10 @@
           <h3>Hours</h3>
           <table class="hours">
             <tbody>
-              <tr><th scope="row">Monday</th><td>9:00am &ndash; 4:00pm</td></tr>
-              <tr><th scope="row">Tuesday</th><td>9:00am &ndash; 4:00pm</td></tr>
-              <tr><th scope="row">Wednesday</th><td>9:00am &ndash; 4:00pm</td></tr>
-              <tr><th scope="row">Thursday</th><td>9:00am &ndash; 4:00pm</td></tr>
+              <tr><th scope="row">Monday</th><td class="open">9:00am to 4:00pm</td></tr>
+              <tr><th scope="row">Tuesday</th><td class="open">9:00am to 4:00pm</td></tr>
+              <tr><th scope="row">Wednesday</th><td class="open">9:00am to 4:00pm</td></tr>
+              <tr><th scope="row">Thursday</th><td class="open">9:00am to 4:00pm</td></tr>
               <tr><th scope="row">Friday</th><td>By appointment only</td></tr>
               <tr><th scope="row">Saturday &amp; Sunday</th><td class="closed">Closed</td></tr>
             </tbody>
