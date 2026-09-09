@@ -1,137 +1,135 @@
-# Koala® Center For Sleep & TMJ Disorders, El Paso
+# Koala Center For Sleep & TMJ Disorders
+## Website Template Findings Report: All Locations
 
-## A concept redesign of the location page, and why it is worth doing
+**Prepared:** September 8, 2026
+**Scope:** Public marketing pages only. Nothing touching patient intake, patient communication, or protected health information.
+**Method:** Direct measurement of all four live location pages on September 8, 2026. Read-only throughout. No contact was made, no forms were submitted, no systems were accessed.
 
-Prepared for Jen | September 8, 2026
-
-**See it first:** [https://rfinlay.github.io/koala-sleep-elpaso/](https://rfinlay.github.io/koala-sleep-elpaso/)
-
-That link works on a phone. Open it there, because that is where most of your patients will find you.
-
----
-
-## What this is
-
-An independent, unsolicited redesign of the El Paso location page at koalasleepcenters.com. It was built as a working preview rather than a mockup, so what you are looking at is a real page, not a picture of one.
-
-Every fact on it came from Koala's own website. The address, the hours, the services, Dr. Kalish's biography, the patient review, the medical disclaimers. Nothing was invented and nothing was embellished. The service links still point back to the real Koala pages.
-
-It is marked so search engines will not index it, and it says plainly in the footer that it is an independent concept and not the official site. It cannot compete with the practice's own page in search results, and it is not pretending to be anything it is not.
+**Live version of this document:** https://rfinlay.github.io/koala-sleep-elpaso/info.html
+**Concept page:** https://rfinlay.github.io/koala-sleep-elpaso/
 
 ---
 
-## The single most important finding
+## 1. The Business Problem
 
-**The El Paso phone number does not appear anywhere on the El Paso location page.**
+**Every Koala location page tells search engines the clinic is in Dunlap, Illinois.**
 
-This is not a subjective design opinion. It was verified directly against the page's source code:
+The four location pages are a single template with the headline text swapped. Everything underneath is shared, including the part that should be different at every location: the business identity itself.
 
-| Check | Result |
+Each page carries a block of machine-readable code that tells search engines who and where this business is. On all four pages that block is identical. It names one street address, one ZIP code, one set of GPS coordinates and one phone number, all belonging to the Illinois clinic.
+
+So the El Paso page publishes El Paso in its visible text and **Dunlap, Illinois** in the code Google actually reads. Bloomington does the same. So does Wausau. Three of the four locations are, in machine-readable form, claiming to be somewhere they are not.
+
+**Why it matters commercially.** Marketing spend on any one location routes patients to a page that quietly contradicts that location's own Google Business Profile. The contradiction is invisible on the page, invisible to automated testing, and repeated everywhere.
+
+**Why it is worth fixing once.** Because it is one template, this is not four repairs. It is one correction that propagates to every location, and to every location added later. The same property that caused the problem is what makes it cheap to solve.
+
+---
+
+## 2. The Existing Vendor, Stated Up Front
+
+The site runs on WordPress under a theme named `patientgain-2021-april`. That is the signature of **PatientGain**, a healthcare marketing platform that sells HIPAA-compliant sites on a recurring per-location contract.
+
+We name them because pretending otherwise would waste everyone's time. There is an incumbent, that relationship presumably exists for good reasons including compliance, and nothing in this document asks anyone to unwind it.
+
+**These findings are handed over as a defect report.** If PatientGain fixes them, the problem is solved and that is a good outcome. Every item below is specific enough to forward and act on directly.
+
+**Scope is deliberately narrow.** Public marketing pages only: structured data, images, page speed, navigation and metadata. Nothing touching patient intake, patient communication, or any system carrying protected health information. That boundary exists so the compliance question never has to be reopened.
+
+---
+
+## 3. The Evidence
+
+All four location pages were downloaded and analyzed on September 8, 2026.
+
+| Finding | Measurement | Pages affected |
+|---|---|---|
+| Address in structured data | Dunlap, IL 61525, with Illinois GPS coordinates | 4 of 4 |
+| Clickable phone links (`tel:`) | **0** | 4 of 4 |
+| Phone in structured data | (309) 204-6490, the Illinois number | 4 of 4 |
+| Mobile largest contentful paint | **6.2 seconds** (Google's "poor" band starts at 4.0) | 4 of 4 |
+| Desktop performance score | 98 to 100 | 4 of 4 |
+| Automated SEO score | **100 out of 100** | 4 of 4 |
+
+### 3.1 The El Paso page's main photograph is the Bloomington clinic
+
+The desktop banner on every location page is the same file, `bloomington-header-img-desktop.jpg`. On the El Paso page its alt text reads "Welcome to Koala Center For Sleep & TMJ Disorders in El Paso, TX." The label says El Paso. The photograph is Bloomington.
+
+The mobile version is worse, because it looks localized and is not. The file named `el-paso-mobile-header.jpg` is byte-for-byte identical to the Bloomington file. Same size, same checksum. A copy was renamed and shipped.
+
+**This also governs link previews.** The social share image on all four pages is that same Bloomington photograph. Every time anyone shares any Koala location link, in a text message or on social media, the thumbnail is Bloomington.
+
+### 3.2 "Call Clinic" does not call the clinic
+
+The link appears three times per page. On every location it redirects to one generic corporate contact page, where the only phone number present is the Illinois number, and it is not tappable.
+
+### 3.3 Mobile load time is 6.2 seconds, on all four
+
+Google's threshold for a good experience is 2.5 seconds; above 4.0 is rated poor. Every location page measures exactly 6.2 seconds on mobile. All four landing on the same figure is itself proof of a shared template.
+
+### 3.4 A map downloads on every page and never appears
+
+The Google Maps library is the single largest asset on the page at 378 KB. It loads, throws an error because the element it needs is missing, and no map is ever shown. That weight is paid on every visit for nothing.
+
+### 3.5 The same menu is stamped in three times
+
+Within one page, the sleep apnea link appears eight times, TMJ eight times, snoring eight times, appointments three times. The same inventory repeats in the header, an inline block and the footer.
+
+### 3.6 Automated testing scores this a perfect 100 for SEO
+
+Every location page scores 100 out of 100 on the standard SEO audit while telling Google it is in the wrong state. Automated tools check whether the code is valid, not whether it is true. Desktop performance scores 98 to 100 as well, so a quick test on a laptop shows almost nothing wrong.
+
+**If anyone checks this, ask them to test on a phone.** That is where the 6.2 seconds shows up, and it is where the patients are.
+
+---
+
+## 4. Corrections and What Each One Buys
+
+Ordered by value against effort. Every one is a template-level change, which means it lands at all four locations at once.
+
+| Correction | Outcome |
 |---|---|
-| Clickable `tel:` phone links on the page | **0** |
-| El Paso 915 number anywhere in the page code | **Not present** |
-| Phone number in the structured data search engines read | **(309) 204-6490** |
-
-That 309 number is the corporate office in Illinois. It is the number Google and other search engines are being handed when they read the El Paso page.
-
-The actual El Paso number, **(915) 301-8387**, does exist on Koala's own appointments page. It is simply absent from the location page a patient is most likely to land on.
-
-The "CALL CLINIC" button does work, but it loads the number through a script after the page arrives. On a slow phone connection, or if that script fails, a patient sees a button that does nothing. There is no plain phone number on the page to fall back on.
-
-**Why this matters more than anything else here:** a person searching "sleep apnea El Paso" at eleven at night, on a phone, exhausted, is trying to do exactly one thing. Call someone. If tapping the obvious button does not immediately produce a phone number, they leave and call the next practice. That is a patient lost at the final step, after the practice already did the hard work of getting found.
-
-In the redesign, the number is plain text at the top of the page, tappable, and repeated in the footer. It works with scripts disabled. It is the first thing on the page.
+| **Give each location its own business record** in the structured data: real address, coordinates, and local phone | Your own website stops contradicting your Google Business Profile. Cheapest item on the list, no argument for leaving it |
+| **Make every phone number tappable**, at the top of each page plus header and footer | The patient who is ready to call can call, instead of arriving at a contact page for another state |
+| **Localize photography and the share image** so each location shows its own clinic | A shared link previews the right place; a prospective patient recognizes the office they will walk into |
+| **Remove the map library that never renders** | 378 KB and a JavaScript error removed from every page load. Largest single speed win, and it costs nothing in features because the map never appears |
+| **Bring mobile load under 2.5 seconds**: modern image formats, deferred offscreen images, connection hints, unused code removed | Holds the visitor who arrived from a phone search late at night, which is when people research sleep problems |
+| **Give the page a hierarchy**: one path from problem to treatment to doctor to booking | A visitor can find the answer to their question without hunting for it |
+| **Lead with the doctor's credentials** rather than burying them mid-paragraph | In a city built around a military installation, specialist and service credentials are the reason a patient chooses one clinic over another |
+| **Fix the small breakages**: a misspelled internal link, two JavaScript errors per page load, hours that disagree between the location page and the FAQ page | Removes the small signals that nobody is watching |
 
 ---
 
-## What else is wrong with the current page
+## 5. What This Document Does Not Claim
 
-Each of these was measured against the live page, not estimated.
-
-**It carries 203,206 bytes and 28 separate scripts to deliver one page of information.** The redesign delivers the same information in 33,054 bytes with zero scripts. That is roughly one sixth the weight. On the older phones and weaker signal common across El Paso and the surrounding communities the practice serves, that difference is the difference between a page that appears and a page someone gives up on.
-
-**The same navigation block is repeated three times on one page.** The appointments link appears four times, patient reviews three times, sleep apnea eight times. A visitor scrolling the page passes the same fourteen links over and over. It reads as clutter, and it buries the things that actually matter underneath it.
-
-**There is almost no visual hierarchy.** The page uses nine identical second-level headings, so the address, the hours, the directions and the service area are all styled the same way and sit in full sentences of prose. Nothing is scannable. A patient looking for "are they open Friday" has to read paragraphs to find out.
-
-**Dr. Kalish's biography is one undifferentiated block of text.** This is the most costly problem on the page, because the content itself is genuinely strong. Army Advanced Education in periodontology. Two years of humanitarian missions in Asia. Dentist to special operations soldiers with 1st Special Forces Group, Airborne. A three-year Army Periodontic Residency completed alongside a master's degree. Advanced training in treating snoring, sleep apnea and TMD.
-
-In El Paso, a city built around Fort Bliss, that is not just a credential. It is the reason a patient chooses this practice over another one. Right now it is a paragraph a visitor has to work through. In the redesign it leads, with the service history given its own space.
-
-**The directions section is four raw Google Maps links in a row.** Canutillo, Vinton, Prado Verde, Santa Teresa. Useful information presented as a wall of blue text.
-
-**There is no warmth on a page about an intimate problem.** People come to this practice because they cannot sleep, they snore badly enough that it is affecting their marriage, or their jaw hurts constantly. The current page reads like a directory listing. It never once acknowledges what the person reading it is actually going through.
+- **Not a ranking promise.** No rankings, Business Profiles or directory listings were measured. Proximity to the searcher dominates local search and no website change affects it. The defensible claim is narrower: the site contradicts itself, and that is free to fix.
+- **Not an accessibility crisis.** Accessibility already scores 99 out of 100. Any work should be held to leaving that score untouched or better.
+- **Not a broken site.** Mobile performance scores in the low seventies. That is mediocre, not broken. The unambiguous failures are the 6.2 second load and the wrong location data.
+- **Not a criticism of any location.** These are template-level defects that no individual location controls or could have prevented.
+- **Not a compliance proposal.** Nothing proposed touches intake, patient communication or protected health information.
+- **Not an assumption about the contract.** No knowledge is claimed of any agreement, term, renewal date or scope with the existing vendor.
 
 ---
 
-## What the redesign changes
+## 6. Path Forward
 
-**It leads with the patient, not the practice.** The first thing a visitor reads speaks to being exhausted, snoring, or in pain, followed immediately by a phone number and a way to book.
-
-**Phone number in plain text, at the top, tappable, no script required.**
-
-**Services in a scannable grid** instead of a repeated list, each linking to the real Koala pages.
-
-**Dr. Kalish's background gets real design attention**, with his military service and credentials leading rather than buried.
-
-**Location, hours, map link and the four surrounding communities** in one clean card a patient can read in five seconds.
-
-**The patient review presented as a real testimonial**, quoted properly and attributed.
-
-**Built for a phone first.** Verified with no sideways scrolling at 375 pixels wide, which is a standard iPhone.
-
-**Accessible.** Proper heading structure, real contrast, keyboard focus states, alt text on images, and it respects a visitor's reduced-motion setting. This matters on a medical site, and it is also what the ADA notice already in Koala's own footer is promising.
+1. **Verify one finding yourself.** Open any location page on a phone and try to tap the phone number. Then share the link and look at the preview image. Under a minute, and neither requires taking anyone's word for it.
+2. **Confirm the correct local phone number for each location.** More than one number appears in public sources for at least one location. This should be settled internally, because it is the one input that has to come from you.
+3. **Forward the findings to whoever maintains the site.** Every item is specific enough to act on. The structured-data correction and photography swap are likely a single day of work for whoever already has access.
+4. **Decide whether the template gets corrected or refreshed.** Correcting the existing template is the smaller path. The concept page is a reference point for that decision, not a proposal.
+5. **Roll the correction across all locations at once**, with mobile load time and the accessibility score used as the before-and-after acceptance test.
 
 ---
 
-## Outcomes this is aimed at
+## 7. Notes on Sourcing
 
-Not traffic. Not rankings. Patients in chairs.
-
-**A phone number that always works.** Every visitor who wants to call can call, immediately, without depending on a script loading. Today that is the single biggest hole in the page.
-
-**Fewer people leaving before the page loads.** Roughly one sixth the page weight means the page arrives quickly on a phone, on a weak signal, in a parking lot, at midnight.
-
-**Search engines seeing an El Paso practice.** Right now the structured data on the El Paso page carries an Illinois phone number. Correcting that helps the practice appear as a genuinely local business.
-
-**Dr. Kalish's credentials doing the work they should.** His Army service and periodontic training are a real competitive advantage in this city and are currently invisible. Making them prominent gives a hesitant patient a reason to choose this practice.
-
-**A page that reaches the whole service area.** Canutillo, Vinton, Prado Verde and Santa Teresa are named clearly rather than hidden in map links.
-
-**A page that feels like it was made for people who cannot sleep.** That is not decoration. It is the difference between a visitor who books and one who keeps looking.
+1. Address, coordinates, phone and share image findings taken from the published source of all four location pages on September 8, 2026, and independently reproducible.
+2. Image duplication confirmed by file checksum comparison between the Bloomington and El Paso mobile header files.
+3. Performance figures measured with Lighthouse 12.8.2 against the live pages under standard mobile throttling. Lab measurements, not field data.
+4. Load-time thresholds are Google's published Core Web Vitals bands: 2.5 seconds or less is good, above 4.0 seconds is poor.
+5. The platform vendor is identified from the publicly visible theme name in the page source. No contract, term or commercial relationship is known or implied.
+6. No rankings, Google Business Profile data, or citation footprint were measured. No claim about search position is made anywhere in this document.
 
 ---
 
-## What it would take to bring it live
-
-Deliberately short, because the work is already done.
-
-**1. The practice confirms the facts.** The phone number, the hours, and Dr. Kalish's biography as written. Everything was pulled from Koala's own site, but it should be confirmed by someone at the practice rather than trusted from a scrape.
-
-**2. Real photography.** The page currently has a labeled placeholder where Dr. Kalish's photo belongs. One good headshot, and ideally a few photos of the office, would replace it.
-
-**3. Koala corporate signs off.** This is a franchise location on a corporate website. The El Paso page is one page in a larger site that also covers Peoria, Bloomington and Wausau. Any change to it goes through whoever controls koalasleepcenters.com. That is the real gate here, and it is a conversation, not a technical problem.
-
-**4. The complete footer notices.** The preview carries the four core medical and legal notices: emergency 911, results may vary, not a substitute for medical advice, and ADA accommodation. Koala's real footer also includes photo and model disclosure, SMS consent language, and third-party tracking notices. A live version would carry all of them.
-
-**5. Publish.** Once the above is settled, the page is a single self-contained file. There is no framework, no build process, and no ongoing dependency. It can be dropped in.
-
----
-
-## The honest part
-
-**This was not requested by Koala.** It is an independent concept built to show what the page could be. It is marked as such, and it is set so search engines will not index it.
-
-**The corporate gate is real.** The El Paso location does not control koalasleepcenters.com on its own. That is the practical obstacle, and it is worth knowing before anyone gets attached to the idea.
-
-**The phone number finding stands on its own regardless.** Even if nothing else here is ever used, the fact that the El Paso location page contains no El Paso phone number, and hands search engines an Illinois one, is worth passing to whoever maintains the site. That is a fixable problem costing the practice real calls right now.
-
----
-
-## Links
-
-**Live preview:** [https://rfinlay.github.io/koala-sleep-elpaso/](https://rfinlay.github.io/koala-sleep-elpaso/)
-
-**Current page:** [https://www.koalasleepcenters.com/locations-el-paso-tx](https://www.koalasleepcenters.com/locations-el-paso-tx)
-
-Open both on a phone, one after the other. The difference is clearest there.
+*Independent concept and findings report. Not affiliated with, endorsed by, or commissioned by Koala Center For Sleep & TMJ Disorders or any vendor named in this document. The concept page is marked so search engines will not index it, collects no patient information, and contains no working forms.*
