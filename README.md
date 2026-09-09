@@ -6,13 +6,25 @@ An **unsolicited concept redesign** of the El Paso location page for Koala® Cen
 
 **Source page being redesigned:** https://www.koalasleepcenters.com/locations-el-paso-tx
 
+## Pages
+
+| Page | Purpose |
+|---|---|
+| `index.html` | The El Paso location page |
+| `appointments.html` | Request an appointment: tappable phone, hours, first-visit guide, links to Koala's real request and referral forms |
+| `services.html` | Services overview with anchored sections for all thirteen services |
+| `sleep-apnea.html`, `tmj-disorder.html`, `snoring.html`, `cpap-alternative.html`, `oral-appliances.html`, `pediatric-sleep.html` | Full pages for the six highest-intent services |
+| `info.html` | Styled information sheet for the practice (presentation layer for `INFO-SHEET.md`; not in the patient nav) |
+
+Every clinical description on the service pages is condensed from the matching page on koalasleepcenters.com and cites it. Nothing clinical was added.
+
 ## What it is
 
-- A single self-contained `index.html`. No build step, no framework, no dependencies beyond Google Fonts.
+- Self-contained single-file HTML pages with inline CSS. No build step, no framework, no dependencies beyond Google Fonts.
 - `<meta name="robots" content="noindex, nofollow">` so the preview never competes with the real site in search.
 - Mobile-first and responsive. Verified at 375px and 1440px with no horizontal scroll.
 - Every clinic fact (address, hours, doctor bio, services, service area, patient review, disclaimers) was taken from the live Koala® site. Nothing was invented.
-- All service links point to the real pages on koalasleepcenters.com.
+- The Koala brand green (`#60a644`, sampled from their live site) is used as an accent: primary buttons, section eyebrows, the hours affordance, active nav. Green text on light backgrounds uses `#3f7230` (5.1:1 on the cream background).
 
 ## Phone number provenance
 
