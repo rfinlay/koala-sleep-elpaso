@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Information sheet: concept redesign of the Koala&reg; El Paso location page</title>
+<meta name="description" content="Findings, changes, outcomes, and the path to live for an independent concept redesign of the Koala Center For Sleep & TMJ Disorders El Paso location page. Prepared for Jen.">
+<meta name="theme-color" content="#0f1d33">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#0f1d33; --night-2:#162a4a; --dusk:#2a4a78; --dusk-l:#4a6fa5;
+    --teal:#2f8f93; --teal-d:#236f72; --teal-soft:#dff0f0;
+    --dawn:#f7f1e8; --dawn-2:#efe4d6; --card:#fffdf9;
+    --peach:#f4c9a6; --rose:#e39a7c; --rose-d:#c9764f;
+    --ink:#1a2333; --muted:#55627a; --line:#e6ded2; --line-dark:#27406a;
+    --star:#f6e7c8;
+    /* Koala brand green, sampled from koalasleepcenters.com. Accent only. */
+    --leaf:#60a644;      /* use behind navy text, or as text on navy: 5.66:1 on --night */
+    --leaf-d:#3f7230;    /* green text on light backgrounds: 5.11:1 on --dawn, 5.74:1 on white */
+    --leaf-soft:#e7f3e0; /* tint for chips and icon plates */
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%; overflow-x:hidden; scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--dawn); color:var(--ink);
+    font-family:"Manrope",-apple-system,system-ui,sans-serif;
+    font-size:17px; line-height:1.6; width:100%; max-width:100%;
+    overflow-x:hidden; overflow-wrap:break-word;
+  }
+  h1,h2,h3,h4,p,li,dd,dt,blockquote,.eyebrow{overflow-wrap:break-word;}
+  a{color:var(--teal-d);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--rose); outline-offset:3px; border-radius:4px;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  .narrow{max-width:760px;}
+  .eyebrow{font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--leaf-d); font-weight:700; margin:0 0 12px;}
+  .btn{display:inline-flex; align-items:center; gap:10px; font-weight:700; padding:15px 30px; border-radius:40px; text-decoration:none; font-size:16px; transition:background .2s,transform .2s,box-shadow .2s; border:1.5px solid transparent;}
+  .btn svg{width:18px; height:18px; flex:none;}
+  .btn.primary{background:var(--leaf); color:var(--night); box-shadow:0 10px 26px rgba(96,166,68,.32);}
+  .btn.primary:hover{background:var(--leaf-d); color:#fff; transform:translateY(-1px);}
+  .btn.ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,.45);}
+  .btn.ghost:hover{background:rgba(255,255,255,.1);}
+  .btn.ghost.dark{color:var(--night); border-color:var(--dusk-l);}
+  .btn.ghost.dark:hover{background:rgba(42,74,120,.08);}
+  .skip{position:absolute; left:-999px; top:8px; background:var(--rose); color:var(--night); padding:10px 16px; border-radius:8px; z-index:100; font-weight:700;}
+  .skip:focus{left:8px;}
+
+  /* ---------- top bar ---------- */
+  .topbar{background:var(--night); color:#fff; border-bottom:1px solid var(--line-dark);}
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 24px; flex-wrap:wrap;}
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:#fff; min-width:0;}
+  .brand .mark{width:40px; height:40px; border-radius:50%; background:radial-gradient(circle at 35% 35%,#fff7e6,var(--peach) 55%,var(--rose) 100%); flex:none; box-shadow:0 0 0 4px rgba(244,201,166,.18);}
+  .brand .name{font-family:"Instrument Serif",serif; font-size:20px; line-height:1.1;}
+  .brand .name small{display:block; font-family:"Manrope",sans-serif; font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:#b9c7dd; margin-top:3px;}
+  nav.top ul{list-style:none; margin:0; padding:0; display:none; gap:26px;}
+  nav.top a{color:#d6e0ef; text-decoration:none; font-weight:600; font-size:15px; padding-bottom:4px; border-bottom:2px solid transparent;}
+  nav.top a:hover{color:#fff;}
+  nav.top a[aria-current="page"]{color:#fff; border-bottom-color:var(--leaf);}
+  .topbar .call{color:#fff; text-decoration:none; font-weight:700; font-size:15px; display:inline-flex; align-items:center; gap:8px; white-space:nowrap;}
+  .topbar .call svg{width:16px; height:16px;}
+  @media(min-width:900px){nav.top ul{display:flex;}}
+
+  /* ---------- hero ---------- */
+  header.hero{
+    position:relative; color:#fff; overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 100% 100%, rgba(227,154,124,.28) 0%, rgba(15,29,51,0) 55%),
+      radial-gradient(70% 60% at 0% 0%, rgba(47,143,147,.30) 0%, rgba(15,29,51,0) 60%),
+      linear-gradient(180deg,var(--night) 0%, var(--night-2) 100%);
+  }
+  .stars{position:absolute; inset:0; pointer-events:none; opacity:.9;}
+  .hero-inner{position:relative; padding-top:64px; padding-bottom:60px;}
+  @media(min-width:880px){.hero-inner{padding-top:96px; padding-bottom:88px;}}
+  .hero .eyebrow{color:var(--peach);}
+  h1.title{font-family:"Instrument Serif",serif; font-weight:400; font-size:clamp(38px,6.5vw,66px); line-height:1.02; margin:0 0 20px; letter-spacing:-.5px; color:#fff; max-width:820px;}
+  h1.title em{font-style:italic; color:var(--peach);}
+  .hero p.lede{font-size:clamp(17px,2.3vw,20px); color:#c6d2e4; margin:0 0 30px; max-width:640px;}
+  .hero .cta-row{display:flex; flex-wrap:wrap; gap:14px; align-items:center;}
+  .hero .cta-row .hint{color:#b9c7dd; font-size:15px; margin:0;}
+  .hero .prepared{display:inline-flex; align-items:center; gap:10px; margin-top:34px; color:#b9c7dd; font-size:14px; letter-spacing:1px; text-transform:uppercase;}
+  .hero .prepared::before{content:""; width:28px; height:2px; background:var(--leaf);}
+
+  /* ---------- sections ---------- */
+  section{padding:72px 0; border-bottom:1px solid var(--line);}
+  h2.head{font-family:"Instrument Serif",serif; font-weight:400; font-size:clamp(32px,5.2vw,48px); line-height:1.05; margin:4px 0 18px; color:var(--night); letter-spacing:-.3px;}
+  h2.head em{font-style:italic; color:var(--rose-d);}
+  .lead{font-size:18.5px; color:var(--muted); max-width:680px; margin:0 0 8px;}
+  .prose p{max-width:720px; margin:0 0 18px;}
+  .prose p:last-child{margin-bottom:0;}
+  .prose b{color:var(--night);}
+  .white{background:#fff;}
+
+  /* stat callouts */
+  .stats{display:grid; grid-template-columns:1fr; gap:14px; margin:32px 0 36px;}
+  @media(min-width:760px){.stats{grid-template-columns:1fr 1fr 1fr;}}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:20px; padding:26px 26px 24px; position:relative; overflow:hidden;}
+  .stat::before{content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--rose-d);}
+  .stat.good::before{background:var(--leaf);}
+  .stat .label{font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); font-weight:700; margin:0 0 10px;}
+  .stat .num{font-family:"Instrument Serif",serif; font-size:clamp(44px,6vw,64px); line-height:1; color:var(--night); margin:0; letter-spacing:-1px;}
+  .stat .num.small{font-size:clamp(30px,4vw,40px); line-height:1.1;}
+  .stat .num code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.55em; letter-spacing:0; vertical-align:middle; background:var(--dawn); border:1px solid var(--line); padding:4px 8px; border-radius:8px; color:var(--rose-d);}
+  .stat .sub{margin:12px 0 0; color:var(--muted); font-size:15px; line-height:1.5;}
+  .stat .sub b{color:var(--rose-d);}
+  .stat.good .sub b{color:var(--leaf-d);}
+  .stat .flag{display:inline-block; margin-top:14px; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:var(--rose-d); padding:5px 11px; border-radius:30px;}
+  .stat.good .flag{background:var(--leaf); color:var(--night);}
+
+  /* weight comparison */
+  .compare{background:var(--card); border:1px solid var(--line); border-radius:22px; padding:28px; margin:30px 0 36px;}
+  .compare h3{font-family:"Instrument Serif",serif; font-weight:400; font-size:26px; margin:0 0 4px; color:var(--night);}
+  .compare p.note{margin:0 0 22px; color:var(--muted); font-size:15px;}
+  .bar-row{display:grid; grid-template-columns:1fr; gap:6px 18px; align-items:center; padding:14px 0; border-top:1px solid var(--line);}
+  @media(min-width:640px){.bar-row{grid-template-columns:150px 1fr auto;}}
+  .bar-row .who{font-weight:700; color:var(--night); font-size:15px;}
+  .bar-row .who small{display:block; font-weight:500; color:var(--muted); font-size:13px;}
+  .bar{height:34px; border-radius:8px; background:var(--dawn-2); position:relative; overflow:hidden;}
+  .bar span{position:absolute; left:0; top:0; bottom:0; border-radius:8px;}
+  .bar-row.now .bar span{width:100%; background:linear-gradient(90deg,var(--rose),var(--rose-d));}
+  .bar-row.new .bar span{width:16.3%; background:var(--leaf);}
+  .bar-row .nums{font-family:"Instrument Serif",serif; font-size:28px; line-height:1; color:var(--night); white-space:nowrap;}
+  .bar-row .nums small{display:block; font-family:"Manrope",sans-serif; font-size:13px; color:var(--muted); margin-top:5px;}
+  .bar-row.new .nums{color:var(--leaf-d);}
+  .compare .verdict{margin:22px 0 0; padding-top:18px; border-top:1px solid var(--line); font-size:16px; color:var(--ink);}
+  .compare .verdict b{color:var(--leaf-d);}
+
+  /* fix callout */
+  .fix{margin-top:30px; background:var(--leaf-soft); border:1px solid #c9e3bb; border-left:5px solid var(--leaf); border-radius:18px; padding:22px 26px; max-width:760px;}
+  .fix .eyebrow{margin-bottom:8px;}
+  .fix p{margin:0; color:var(--ink);}
+
+  /* findings list */
+  .findings{list-style:none; margin:32px 0 0; padding:0; display:grid; gap:14px; grid-template-columns:1fr;}
+  @media(min-width:820px){.findings{grid-template-columns:1fr 1fr;}}
+  .finding{background:var(--dawn); border:1px solid var(--line); border-radius:18px; padding:24px 26px;}
+  .finding h3{font-family:"Instrument Serif",serif; font-weight:400; font-size:24px; margin:0 0 8px; color:var(--night); line-height:1.15;}
+  .finding p{margin:0; color:var(--muted); font-size:15.5px;}
+  .finding p + p{margin-top:12px;}
+  .finding.wide{grid-column:1 / -1;}
+
+  /* checklist */
+  .checks{list-style:none; margin:30px 0 0; padding:0; display:grid; gap:12px; grid-template-columns:1fr;}
+  @media(min-width:760px){.checks{grid-template-columns:1fr 1fr;}}
+  .checks li{display:flex; gap:14px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px 20px;}
+  .checks .tick{width:28px; height:28px; border-radius:50%; background:var(--leaf); color:var(--night); display:grid; place-items:center; flex:none; margin-top:2px;}
+  .checks .tick svg{width:15px; height:15px;}
+  .checks b{color:var(--night); display:block; margin-bottom:3px;}
+  .checks span.t{color:var(--muted); font-size:15px;}
+
+  /* outcomes */
+  .outcomes{background:var(--night); color:#e6edf7; border-bottom:none;}
+  .outcomes .eyebrow{color:var(--peach);}
+  .outcomes h2.head{color:#fff;}
+  .outcomes h2.head em{color:var(--peach);}
+  .outcomes .lead{color:#c6d2e4;}
+  .out-grid{display:grid; gap:14px; grid-template-columns:1fr; margin-top:32px;}
+  @media(min-width:760px){.out-grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:1000px){.out-grid{grid-template-columns:1fr 1fr 1fr;}}
+  .out{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:24px;}
+  .out .k{font-family:"Instrument Serif",serif; font-size:23px; color:#fff; margin:0 0 8px; line-height:1.15;}
+  .out .k::before{content:""; display:block; width:26px; height:3px; background:var(--leaf); margin-bottom:12px; border-radius:2px;}
+  .out p{margin:0; color:#b9c7dd; font-size:15.5px;}
+
+  /* steps */
+  .steps{list-style:none; counter-reset:step; margin:32px 0 0; padding:0; max-width:820px;}
+  .steps li{counter-increment:step; display:grid; grid-template-columns:52px 1fr; gap:18px; padding:22px 0; border-top:1px solid var(--line);}
+  .steps li:last-child{border-bottom:1px solid var(--line);}
+  .steps li::before{content:counter(step); font-family:"Instrument Serif",serif; font-size:34px; line-height:1; color:var(--leaf-d); padding-top:2px;}
+  .steps h3{font-family:"Instrument Serif",serif; font-weight:400; font-size:24px; margin:0 0 6px; color:var(--night);}
+  .steps p{margin:0; color:var(--muted); font-size:15.5px;}
+  .steps .gate{display:inline-block; margin-left:8px; font-family:"Manrope",sans-serif; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:var(--rose-d); padding:3px 9px; border-radius:20px; vertical-align:middle;}
+
+  /* honest */
+  .honest{background:var(--dawn-2);}
+  .honest-grid{display:grid; gap:14px; grid-template-columns:1fr; margin-top:30px;}
+  @media(min-width:800px){.honest-grid{grid-template-columns:1fr 1fr 1fr;}}
+  .honest .card{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:24px;}
+  .honest .card h3{font-family:"Instrument Serif",serif; font-weight:400; font-size:24px; margin:0 0 8px; color:var(--night); line-height:1.15;}
+  .honest .card p{margin:0; color:var(--muted); font-size:15.5px;}
+
+  /* links band */
+  .cta{background:linear-gradient(135deg,var(--night) 0%,var(--dusk) 100%); color:#fff; text-align:center; border-bottom:none;}
+  .cta h2.head{color:#fff;}
+  .cta h2.head em{color:var(--peach);}
+  .cta p{color:#c6d2e4; max-width:560px; margin:0 auto 26px;}
+  .cta .cta-row{display:flex; flex-wrap:wrap; gap:14px; justify-content:center;}
+  .cta .urls{margin:26px auto 0; max-width:640px; font-size:14px; color:#b9c7dd; line-height:1.8;}
+  .cta .urls a{color:#fff; word-break:break-all;}
+
+  /* footer */
+  footer{background:#0a1526; color:#8fa3c2; font-size:13.5px; padding:44px 0 40px;}
+  footer .fb{font-family:"Instrument Serif",serif; color:#fff; font-size:22px; display:block; margin-bottom:6px;}
+  footer .meta{color:#b9c7dd; margin:0 0 26px;}
+  footer .meta a{color:#d6e0ef;}
+  footer ol{margin:0; padding-left:20px; max-width:860px;}
+  footer li{margin-bottom:8px; line-height:1.5;}
+  footer a{color:#b9c7dd;}
+  .preview-note{margin-top:30px; padding-top:20px; border-top:1px solid var(--line-dark); color:#8fa3c2; font-size:13px;}
+  .preview-note b{color:#d6e0ef;}
+
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;} *{transition:none!important; animation:none!important;}}
+  @media print{
+    .topbar,.skip,.stars{display:none;}
+    header.hero,.outcomes,.cta,footer{background:#fff!important; color:var(--ink)!important;}
+    h1.title,.outcomes h2.head,.cta h2.head,.out .k{color:var(--night)!important;}
+    section{padding:32px 0;}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Koala Center For Sleep and TMJ Disorders, El Paso: concept home page">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="name">Koala<sup style="font-size:.5em">&reg;</sup> Center For Sleep &amp; TMJ Disorders<small>El Paso, Texas &middot; Concept</small></span>
+    </a>
+    <nav class="top" aria-label="Site">
+      <ul>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#doctor">Dr. Kalish</a></li>
+        <li><a href="index.html#location">Location &amp; hours</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="call" href="tel:+19153018387"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>(915) 301-8387</a>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <svg class="stars" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g fill="#f6e7c8">
+      <circle cx="90" cy="80" r="1.6" opacity=".8"/><circle cx="210" cy="150" r="1.1" opacity=".6"/><circle cx="330" cy="60" r="1.4" opacity=".7"/>
+      <circle cx="480" cy="120" r="1" opacity=".5"/><circle cx="640" cy="40" r="1.7" opacity=".8"/><circle cx="760" cy="170" r="1.2" opacity=".6"/>
+      <circle cx="900" cy="70" r="1.5" opacity=".7"/><circle cx="1040" cy="140" r="1" opacity=".5"/><circle cx="1150" cy="50" r="1.6" opacity=".8"/>
+      <circle cx="150" cy="320" r="1" opacity=".4"/><circle cx="560" cy="290" r="1.3" opacity=".45"/><circle cx="980" cy="330" r="1.1" opacity=".4"/>
+    </g>
+    <circle cx="1060" cy="120" r="46" fill="#f4c9a6" opacity=".92"/>
+    <circle cx="1082" cy="104" r="40" fill="#16294a"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Information sheet &middot; Koala&reg; Center For Sleep &amp; TMJ Disorders, El Paso</p>
+    <h1 class="title">A concept redesign of the location page, <em>and why it is worth doing.</em></h1>
+    <p class="lede"><b style="color:#fff">See it first.</b> The link below works on a phone. Open it there, because that is where most of your patients will find you.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="index.html">Open the live preview <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn ghost" href="https://www.koalasleepcenters.com/locations-el-paso-tx" target="_blank" rel="noopener">Current page, for comparison</a>
+    </div>
+    <p class="prepared">Prepared for Jen &middot; September 8, 2026</p>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="white" aria-labelledby="what-h">
+  <div class="wrap prose">
+    <p class="eyebrow">What this is</p>
+    <h2 class="head" id="what-h">A working page, <em>not a picture of one.</em></h2>
+    <p>An independent, unsolicited redesign of the El Paso location page at koalasleepcenters.com. It was built as a working preview rather than a mockup, so what you are looking at is a real page, not a picture of one.</p>
+    <p>Every fact on it came from Koala's own website. The address, the hours, the services, Dr. Kalish's biography, the patient review, the medical disclaimers. Nothing was invented and nothing was embellished. The service links still point back to the real Koala pages.</p>
+    <p>It is marked so search engines will not index it, and it says plainly in the footer that it is an independent concept and not the official site. It cannot compete with the practice's own page in search results, and it is not pretending to be anything it is not.</p>
+  </div>
+</section>
+
+<section aria-labelledby="finding-h">
+  <div class="wrap">
+    <p class="eyebrow">The single most important finding</p>
+    <h2 class="head" id="finding-h">The El Paso phone number does not appear <em>anywhere</em> on the El Paso location page.</h2>
+    <p class="lead">This is not a subjective design opinion. It was verified directly against the page's source code.</p>
+
+    <div class="stats" role="list" aria-label="Phone number checks against the current page">
+      <div class="stat" role="listitem">
+        <p class="label">Clickable phone links on the page</p>
+        <p class="num">0 <code>tel:</code></p>
+        <p class="sub">Not one tappable phone link anywhere on the current El Paso page.</p>
+        <span class="flag">Verified in source</span>
+      </div>
+      <div class="stat" role="listitem">
+        <p class="label">El Paso 915 number anywhere in the page code</p>
+        <p class="num small">Not present</p>
+        <p class="sub">The clinic's real number, <b>(915) 301-8387</b>, is absent from the page a patient is most likely to land on.</p>
+        <span class="flag">Verified in source</span>
+      </div>
+      <div class="stat" role="listitem">
+        <p class="label">Phone number in the structured data search engines read</p>
+        <p class="num small">(309) 204-6490</p>
+        <p class="sub">That is the corporate office in <b>Illinois</b>. It is the number Google and other search engines are being handed when they read the El Paso page.</p>
+        <span class="flag">Wrong state</span>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>The actual El Paso number, <b>(915) 301-8387</b>, does exist on Koala's own appointments page. It is simply absent from the location page a patient is most likely to land on.</p>
+      <p>The "CALL CLINIC" button does work, but it loads the number through a script after the page arrives. On a slow phone connection, or if that script fails, a patient sees a button that does nothing. There is no plain phone number on the page to fall back on.</p>
+      <p><b>Why this matters more than anything else here:</b> a person searching "sleep apnea El Paso" at eleven at night, on a phone, exhausted, is trying to do exactly one thing. Call someone. If tapping the obvious button does not immediately produce a phone number, they leave and call the next practice. That is a patient lost at the final step, after the practice already did the hard work of getting found.</p>
+    </div>
+
+    <div class="fix">
+      <p class="eyebrow">In the redesign</p>
+      <p>The number is plain text at the top of the page, tappable, and repeated in the footer. It works with scripts disabled. It is the first thing on the page.</p>
+    </div>
+  </div>
+</section>
+
+<section class="white" aria-labelledby="else-h">
+  <div class="wrap">
+    <p class="eyebrow">What else is wrong with the current page</p>
+    <h2 class="head" id="else-h">Measured against the live page, <em>not estimated.</em></h2>
+
+    <div class="compare" aria-label="Page weight comparison">
+      <h3>One page of information. Two very different deliveries.</h3>
+      <p class="note">Bytes transferred and separate scripts loaded, current page versus the redesign.</p>
+      <div class="bar-row now">
+        <div class="who">Current page<small>koalasleepcenters.com</small></div>
+        <div class="bar" aria-hidden="true"><span></span></div>
+        <div class="nums">203,206 bytes<small>28 separate scripts</small></div>
+      </div>
+      <div class="bar-row new">
+        <div class="who">Redesign<small>this preview</small></div>
+        <div class="bar" aria-hidden="true"><span></span></div>
+        <div class="nums">33,054 bytes<small>0 scripts</small></div>
+      </div>
+      <p class="verdict"><b>Roughly one sixth the weight.</b> On the older phones and weaker signal common across El Paso and the surrounding communities the practice serves, that difference is the difference between a page that appears and a page someone gives up on.</p>
+    </div>
+
+    <ul class="findings">
+      <li class="finding">
+        <h3>The same navigation block is repeated three times on one page.</h3>
+        <p>The appointments link appears four times, patient reviews three times, sleep apnea eight times. A visitor scrolling the page passes the same fourteen links over and over. It reads as clutter, and it buries the things that actually matter underneath it.</p>
+      </li>
+      <li class="finding">
+        <h3>There is almost no visual hierarchy.</h3>
+        <p>The page uses nine identical second-level headings, so the address, the hours, the directions and the service area are all styled the same way and sit in full sentences of prose. Nothing is scannable. A patient looking for "are they open Friday" has to read paragraphs to find out.</p>
+      </li>
+      <li class="finding wide">
+        <h3>Dr. Kalish's biography is one undifferentiated block of text.</h3>
+        <p>This is the most costly problem on the page, because the content itself is genuinely strong. Army Advanced Education in periodontology. Two years of humanitarian missions in Asia. Dentist to special operations soldiers with 1st Special Forces Group, Airborne. A three-year Army Periodontic Residency completed alongside a master's degree. Advanced training in treating snoring, sleep apnea and TMD.</p>
+        <p>In El Paso, a city built around Fort Bliss, that is not just a credential. It is the reason a patient chooses this practice over another one. Right now it is a paragraph a visitor has to work through. In the redesign it leads, with the service history given its own space.</p>
+      </li>
+      <li class="finding">
+        <h3>The directions section is four raw Google Maps links in a row.</h3>
+        <p>Canutillo, Vinton, Prado Verde, Santa Teresa. Useful information presented as a wall of blue text.</p>
+      </li>
+      <li class="finding">
+        <h3>There is no warmth on a page about an intimate problem.</h3>
+        <p>People come to this practice because they cannot sleep, they snore badly enough that it is affecting their marriage, or their jaw hurts constantly. The current page reads like a directory listing. It never once acknowledges what the person reading it is actually going through.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="changes-h">
+  <div class="wrap">
+    <p class="eyebrow">What the redesign changes</p>
+    <h2 class="head" id="changes-h">It leads with the patient, <em>not the practice.</em></h2>
+    <p class="lead">The first thing a visitor reads speaks to being exhausted, snoring, or in pain, followed immediately by a phone number and a way to book.</p>
+    <ul class="checks">
+      <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><div><b>Phone number in plain text, at the top, tappable, no script required.</b></div></li>
+      <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><div><b>Services in a scannable grid</b><span class="t">instead of a repeated list, each linking to the real Koala pages.</span></div></li>
+      <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><div><b>Dr. Kalish's background gets real design attention,</b><span class="t">with his military service and credentials leading rather than buried.</span></div></li>
+      <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><div><b>Location, hours, map link and the four surrounding communities</b><span class="t">in one clean card a patient can read in five seconds.</span></div></li>
+      <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><div><b>The patient review presented as a real testimonial,</b><span class="t">quoted properly and attributed.</span></div></li>
+      <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><div><b>Built for a phone first.</b><span class="t">Verified with no sideways scrolling at 375 pixels wide, which is a standard iPhone.</span></div></li>
+      <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><div><b>Accessible.</b><span class="t">Proper heading structure, real contrast, keyboard focus states, alt text on images, and it respects a visitor's reduced-motion setting. This matters on a medical site, and it is also what the ADA notice already in Koala's own footer is promising.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="outcomes" aria-labelledby="out-h">
+  <div class="wrap">
+    <p class="eyebrow">Outcomes this is aimed at</p>
+    <h2 class="head" id="out-h">Not traffic. Not rankings. <em>Patients in chairs.</em></h2>
+    <div class="out-grid">
+      <div class="out"><p class="k">A phone number that always works.</p><p>Every visitor who wants to call can call, immediately, without depending on a script loading. Today that is the single biggest hole in the page.</p></div>
+      <div class="out"><p class="k">Fewer people leaving before the page loads.</p><p>Roughly one sixth the page weight means the page arrives quickly on a phone, on a weak signal, in a parking lot, at midnight.</p></div>
+      <div class="out"><p class="k">Search engines seeing an El Paso practice.</p><p>Right now the structured data on the El Paso page carries an Illinois phone number. Correcting that helps the practice appear as a genuinely local business.</p></div>
+      <div class="out"><p class="k">Dr. Kalish's credentials doing the work they should.</p><p>His Army service and periodontic training are a real competitive advantage in this city and are currently invisible. Making them prominent gives a hesitant patient a reason to choose this practice.</p></div>
+      <div class="out"><p class="k">A page that reaches the whole service area.</p><p>Canutillo, Vinton, Prado Verde and Santa Teresa are named clearly rather than hidden in map links.</p></div>
+      <div class="out"><p class="k">A page that feels like it was made for people who cannot sleep.</p><p>That is not decoration. It is the difference between a visitor who books and one who keeps looking.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="white" aria-labelledby="live-h">
+  <div class="wrap">
+    <p class="eyebrow">What it would take to bring it live</p>
+    <h2 class="head" id="live-h">Deliberately short, <em>because the work is already done.</em></h2>
+    <ol class="steps">
+      <li><div><h3>The practice confirms the facts.</h3><p>The phone number, the hours, and Dr. Kalish's biography as written. Everything was pulled from Koala's own site, but it should be confirmed by someone at the practice rather than trusted from a scrape.</p></div></li>
+      <li><div><h3>Real photography.</h3><p>The page currently has a labeled placeholder where Dr. Kalish's photo belongs. One good headshot, and ideally a few photos of the office, would replace it.</p></div></li>
+      <li><div><h3>Koala corporate signs off. <span class="gate">The real gate</span></h3><p>This is a franchise location on a corporate website. The El Paso page is one page in a larger site that also covers Peoria, Bloomington and Wausau. Any change to it goes through whoever controls koalasleepcenters.com. That is the real gate here, and it is a conversation, not a technical problem.</p></div></li>
+      <li><div><h3>The complete footer notices.</h3><p>The preview carries the four core medical and legal notices: emergency 911, results may vary, not a substitute for medical advice, and ADA accommodation. Koala's real footer also includes photo and model disclosure, SMS consent language, and third-party tracking notices. A live version would carry all of them.</p></div></li>
+      <li><div><h3>Publish.</h3><p>Once the above is settled, the page is a single self-contained file. There is no framework, no build process, and no ongoing dependency. It can be dropped in.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="honest" aria-labelledby="honest-h">
+  <div class="wrap">
+    <p class="eyebrow">The honest part</p>
+    <h2 class="head" id="honest-h">Three things worth knowing <em>before anyone gets attached.</em></h2>
+    <div class="honest-grid">
+      <div class="card"><h3>This was not requested by Koala.</h3><p>It is an independent concept built to show what the page could be. It is marked as such, and it is set so search engines will not index it.</p></div>
+      <div class="card"><h3>The corporate gate is real.</h3><p>The El Paso location does not control koalasleepcenters.com on its own. That is the practical obstacle, and it is worth knowing before anyone gets attached to the idea.</p></div>
+      <div class="card"><h3>The phone number finding stands on its own regardless.</h3><p>Even if nothing else here is ever used, the fact that the El Paso location page contains no El Paso phone number, and hands search engines an Illinois one, is worth passing to whoever maintains the site. That is a fixable problem costing the practice real calls right now.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="links-h">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--peach)">Links</p>
+    <h2 class="head" id="links-h">Open both on a phone, <em>one after the other.</em></h2>
+    <p>The difference is clearest there.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="index.html">Live preview</a>
+      <a class="btn ghost" href="https://www.koalasleepcenters.com/locations-el-paso-tx" target="_blank" rel="noopener">Current page</a>
+    </div>
+    <p class="urls"><b>Live preview:</b> <a href="https://rfinlay.github.io/koala-sleep-elpaso/">https://rfinlay.github.io/koala-sleep-elpaso/</a><br><b>Current page:</b> <a href="https://www.koalasleepcenters.com/locations-el-paso-tx" target="_blank" rel="noopener">https://www.koalasleepcenters.com/locations-el-paso-tx</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="fb">Koala&reg; Center For Sleep &amp; TMJ Disorders &middot; El Paso, TX</span>
+    <p class="meta">6901 Helen of Troy Dr, Ste D-2, El Paso, TX 79911 &middot; <a href="tel:+19153018387">(915) 301-8387</a> &middot; <a href="https://www.koalasleepcenters.com/locations-el-paso-tx" target="_blank" rel="noopener">Official site</a></p>
+    <ol aria-label="Medical and legal notices">
+      <li>In case of a life-threatening emergency, immediately call 911.</li>
+      <li>For any medical procedures, patients may respond to treatment differently. Each patient's results may vary.</li>
+      <li>Information on this site is not intended or implied to be a substitute for professional medical advice, diagnosis, or treatment. All content is for general information purposes only.</li>
+      <li>If you are vision-impaired or have another impairment covered by the Americans with Disabilities Act or a similar law, and you wish to discuss potential accommodations related to using this website, please contact the clinic.</li>
+    </ol>
+    <p class="preview-note"><b>Preview / concept redesign.</b> This page is an independent design concept for the Koala&reg; Center For Sleep &amp; TMJ Disorders El Paso location. It is not the official website, is not indexed by search engines, and is not affiliated with or endorsed by Koala&reg; Centers. All clinic facts were taken from <a href="https://www.koalasleepcenters.com/locations-el-paso-tx" target="_blank" rel="noopener">koalasleepcenters.com</a>. This information sheet is the presentation layer for the written sheet in the project's repository.</p>
+  </div>
+</footer>
+
+</body>
+</html>
